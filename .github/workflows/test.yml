@@ -4,19 +4,17 @@ on:
     branches-ignore:
       - master
 
-env:
-  E1: test
-
 jobs:
   test_env_1:
     name: Test
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.j1.outputs.pr }}
     steps:
     - name: test1
+      id: j1
       run: |
-        echo ${E1}
-        echo '::set-env name=E1::test2'
-        exit 1
+        echo "::set-output name=pr::OK"
   test_env_2:
     needs: test_env_1
     name: Test
@@ -24,4 +22,4 @@ jobs:
     steps:
     - name: test2
       run: |
-        echo ${E1}
+        echo ${needs.test_env_1.outputs.pr}
