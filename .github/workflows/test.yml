@@ -16,6 +16,7 @@ jobs:
       run: |
         echo ${E1}
         echo '::set-env name=E1::test2'
+        exit 1
   test_env_2:
     needs: test_env_1
     name: Test
