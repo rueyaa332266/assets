@@ -11,5 +11,5 @@ jobs:
     steps:
     - name: Set up Go 1.14
       run: |
+        echo ${{ env.GITHUB_SHA }}
         echo ${{ env.keys }}
-        echo ${{ Object.keys(env) }}
