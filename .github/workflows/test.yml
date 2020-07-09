@@ -1,0 +1,13 @@
+name: build
+on:
+  push:
+    branches-ignore:
+      - master
+
+jobs:
+  test_env:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set up Go 1.14
+      run: echo ${{ env }}
