@@ -10,4 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Set up Go 1.14
-      run: echo ${{ env }}
+      run: |
+        echo ${{ env }}
+        echo ${env}
+        echo ${ENV}
+        ENV
