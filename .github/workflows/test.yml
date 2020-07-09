@@ -22,4 +22,4 @@ jobs:
     steps:
     - name: test2
       run: |
-        echo ${needs.test_env_1.outputs.pr}
+        echo ${{needs.test_env_1.outputs.pr}}
