@@ -9,7 +9,7 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     outputs:
-      output1: ${{ steps.j1.outputs.pr }}
+      output1: ${{ steps.steps.j1.outputs.pr }}
     steps:
     - name: test1
       id: j1
@@ -22,4 +22,7 @@ jobs:
     steps:
     - name: test2
       run: |
-        echo ${{needs.test_env_1.outputs.pr}}
+        echo ${{needs.test_env_1.outputs.output1}}
+    - name: check if
+      if: needs.test_env_1.outputs.output1 != 'OK'
+      run: echo skip?
