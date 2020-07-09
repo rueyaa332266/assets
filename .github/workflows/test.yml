@@ -4,13 +4,23 @@ on:
     branches-ignore:
       - master
 
+env:
+  E1: test
+
 jobs:
-  test_env:
+  test_env_1:
     name: Test
     runs-on: ubuntu-latest
     steps:
-    - name: Set up Go 1.14
+    - name: test1
       run: |
-        echo ${GITHUB_SHA}
-        echo ${{ env.github_sha }}
-        echo ${{ env.keys }}
+        echo ${E1}
+        echo '::set-env name=E1::test2'
+  test_env_2:
+    needs: test_env_1
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+    - name: test2
+      run: |
+        echo ${E1}
