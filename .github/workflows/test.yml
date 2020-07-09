@@ -19,10 +19,8 @@ jobs:
     needs: test_env_1
     name: Test2
     runs-on: ubuntu-latest
+    if: needs.test_env_1.outputs.output1 != 'OK'
     steps:
     - name: test2
       run: |
         echo ${{needs.test_env_1.outputs.output1}}
-    - name: check if
-      if: needs.test_env_1.outputs.output1 != 'OK'
-      run: echo skip?
