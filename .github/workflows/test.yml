@@ -4,6 +4,9 @@ on:
     branches-ignore:
       - master
 
+env:
+  SKIP: false
+
 jobs:
   test_env_1:
     name: Test1
@@ -16,8 +19,9 @@ jobs:
         echo "::set-env name=PR::${pr}"
     - name: test2
       run: |
+        echo ${{ env.SKIP }}
         echo ${{ env.PR }}
     - name: test3
-      if: env.PR == 'OK'
+      if: env.PR == 'OK' && env.PR == 'false'
       run: |
         echo "OK!"
