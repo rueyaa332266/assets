@@ -21,6 +21,7 @@ jobs:
       run: |
         echo ${{ env.SKIP }}
         echo ${{ env.PR }}
+        echo "::set-env name=SKIP::true"
     - name: test3
       if: env.PR == 'OK' && env.SKIP == 'false'
       run: |
