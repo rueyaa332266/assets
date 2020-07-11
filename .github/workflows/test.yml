@@ -8,19 +8,14 @@ jobs:
   test_env_1:
     name: Test1
     runs-on: ubuntu-latest
-    outputs:
-      output1: ${{ steps.j1.outputs.pr }}
     steps:
     - name: test1
-      id: j1
       run: |
-        echo "::set-output name=pr::OK"
-  test_env_2:
-    needs: test_env_1
-    name: Test2
-    runs-on: ubuntu-latest
-    if: needs.test_env_1.outputs.output1 != 'OK'
-    steps:
+        echo "::set-env name=PR::OK"
     - name: test2
       run: |
-        echo ${{needs.test_env_1.outputs.output1}}
+        echo ${{ env.PR }}
+    - name: test3
+      if: env.PR == 'OK'
+      run: |
+        echo "OK!"
