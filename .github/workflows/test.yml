@@ -22,6 +22,6 @@ jobs:
         echo ${{ env.SKIP }}
         echo ${{ env.PR }}
     - name: test3
-      if: env.PR == false
+      if: env.PR == "false"
       run: |
         echo "OK!"
