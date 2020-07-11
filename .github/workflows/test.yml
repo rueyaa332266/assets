@@ -11,7 +11,9 @@ jobs:
     steps:
     - name: test1
       run: |
-        echo "::set-env name=PR::OK"
+        pr=$(echo OK)
+        echo ${pr}
+        echo "::set-env name=PR::${pr}"
     - name: test2
       run: |
         echo ${{ env.PR }}
